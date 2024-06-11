@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include <stddef.h> /* size_t */
 
 /** Bit mask stuff **/
 static const size_t BITS_PER_LONG      = 8 * sizeof(long);

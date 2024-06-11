@@ -1,3 +1,4 @@
+#include "a64fx_hpc_extension.h"
 #include "defs.h"
 
 #include <assert.h>
@@ -38,7 +39,7 @@
 // This bit is ignored except for the Prefetch
 // instruction.
 
-void *a64fx_hpc_set_hwprefetch_tag(void    *address,
+void *a64fx_hpc_hwprefetch_set_tag(void    *address,
                                    unsigned disable_pf_l1,
                                    unsigned disable_pf_l2,
                                    unsigned strong)
@@ -63,7 +64,7 @@ void *a64fx_hpc_set_hwprefetch_tag(void    *address,
 // When SCE=0:
 // this field is ignored, and sector ID operates as Default.
 
-void *a64fx_hpc_set_sectorid_tag(void *address, uint64_t sectorid)
+void *a64fx_hpc_sectorcache_set_sectorid_tag(void *address, uint64_t sectorid)
 {
     assert(sectorid < 4);
     uintptr_t tagged_address = (uintptr_t)address;

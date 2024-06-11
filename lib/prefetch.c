@@ -1,3 +1,4 @@
+#include "a64fx_hpc_extension.h"
 #include "defs.h"
 
 #include <assert.h>
@@ -35,13 +36,13 @@
 // When L2_DIST = 0, the hardware prefetch for L2 operates by the
 // default distance.
 
-void a64fx_hpc_set_default_hwprefetch(void)
+void a64fx_hpc_hwprefetch_set_default(void)
 {
     uint64_t val = 0x0;
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
 }
 
-uint64_t a64fx_hpc_set_hwprefetch_distance_l1(uint64_t distance)
+uint64_t a64fx_hpc_hwprefetch_set_distance_l1(uint64_t distance)
 {
     assert(distance < 16);
     uint64_t val_old;
@@ -54,7 +55,7 @@ uint64_t a64fx_hpc_set_hwprefetch_distance_l1(uint64_t distance)
     return val_old;
 }
 
-uint64_t a64fx_hpc_set_hwprefetch_distance_l2(uint64_t distance)
+uint64_t a64fx_hpc_hwprefetch_set_distance_l2(uint64_t distance)
 {
     assert(distance < 16);
     uint64_t val_old;
@@ -67,21 +68,21 @@ uint64_t a64fx_hpc_set_hwprefetch_distance_l2(uint64_t distance)
     return val_old;
 }
 
-uint64_t a64fx_hpc_get_hwprefetch_distance_l1(void)
+uint64_t a64fx_hpc_hwprefetch_get_distance_l1(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
     return (val & GENMASK_ULL(27, 24)) >> 24;
 }
 
-uint64_t a64fx_hpc_get_hwprefetch_distance_l2(void)
+uint64_t a64fx_hpc_hwprefetch_get_distance_l2(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
     return (val & GENMASK_ULL(19, 16)) >> 16;
 }
 
-void a64fx_hpc_enable_hwprefetch_l1(void)
+void a64fx_hpc_hwprefetch_enable_l1(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
@@ -89,7 +90,7 @@ void a64fx_hpc_enable_hwprefetch_l1(void)
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
 }
 
-void a64fx_hpc_enable_hwprefetch_l2(void)
+void a64fx_hpc_hwprefetch_enable_l2(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
@@ -97,7 +98,7 @@ void a64fx_hpc_enable_hwprefetch_l2(void)
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
 }
 
-void a64fx_hpc_disable_hwprefetch_l1(void)
+void a64fx_hpc_hwprefetch_disable_l1(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
@@ -105,7 +106,7 @@ void a64fx_hpc_disable_hwprefetch_l1(void)
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
 }
 
-void a64fx_hpc_disable_hwprefetch_l2(void)
+void a64fx_hpc_hwprefetch_disable_l2(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
