@@ -23,21 +23,21 @@ To install the kernel module:
 
 ```sh
 # requires root privileges
-make -C modules install_kmod
+make install_kmod
 ```
 
 To install the user library:
 
 ```sh
 # default PREFIX_PATH is /usr
-PREFIX=PREFIX_PATH make install_userlib
+PREFIX=$PREFIX_PATH make install_userlib
 ```
 
 To install the kernel module and user library:
 
 ```sh
 # default PREFIX_PATH is /usr
-PREFIX=PREFIX_PATH make install
+PREFIX=$PREFIX_PATH make install
 ```
 
 ## Usage
@@ -48,12 +48,13 @@ First load the kernel module:
 insmod a64fx_hpc_extension
 ```
 
-Link the library to your application with `-la64fx_hpc_extension` and include the header `a64fx_hpc_extension.h`. Please see the header file for API reference and the Fujitsu documentation for more details on functionality.
+Link the library to your application with `-la64fx_hpc_extension` and include the library header `a64fx_hpc_extension.h`. 
+Please see the header file for API reference and the Fujitsu documentation for more details on functionality.
 
 ## Example
 
 ```C
-/* examples/main.c */
+/* see examples/main.c */
 ```
 
 ```sh
@@ -70,17 +71,14 @@ sudo rmmod a64fx_hpc_extension
 
 ## Acronyms
 
-SC: Sector Cache
-
-PF: Prefetch
-
-PFD: Prefetch Distance
-
-HW: Hardware
-
-PE: Processing Element
-
-CMG: Core Memory Group
+| Acro |                    |
+| ---- | ------------------ |
+| SC   | Sector Cache       |
+| PF   | Prefetch           |
+| PFD  | Prefetch Distance  |
+| HW   | Hardware           |
+| PE   | Processing Element |
+| CMG  | Core Memory Group  |
 
 ## List of Registers
 
