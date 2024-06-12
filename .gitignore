@@ -1,0 +1,9 @@
+# build files
+*.o
+*.so
+# kbuild files
+*.ko
+modules.order
+Module.symvers
+# misc
+README.pdf
