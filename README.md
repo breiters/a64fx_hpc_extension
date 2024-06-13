@@ -59,7 +59,7 @@ Please see the header file for API reference and the Fujitsu documentation for m
 
 ```sh
 # insert kernel module
-sudo insmod a64fx_hpc_extension
+sudo insmod a64fx_hpc_extension.ko
 # build example
 make example
 export OMP_PLACES=CORES OMP_PROC_BIND=CLOSE OMP_NUM_THREADS=48
