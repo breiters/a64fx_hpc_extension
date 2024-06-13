@@ -14,7 +14,7 @@ CFLAGS += $(RELEASEFLAGS)
 TARGET  := liba64fx_hpc_extension.so
 INCLUDE := a64fx_hpc_extension.h
 
-SOURCES := $(wildcard *.c)
+SOURCES := $(wildcard src/*.c)
 OBJECTS := $(SOURCES:.c=.o)
 
 PREFIX ?= /usr/

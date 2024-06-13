@@ -82,7 +82,7 @@ uint64_t a64fx_hpc_hwprefetch_get_distance_l2(void)
     return (val & GENMASK_ULL(19, 16)) >> 16;
 }
 
-void a64fx_hpc_hwprefetch_enable_l1(void)
+void a64fx_hpc_hwprefetch_set_enabled_l1(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
@@ -90,7 +90,7 @@ void a64fx_hpc_hwprefetch_enable_l1(void)
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
 }
 
-void a64fx_hpc_hwprefetch_enable_l2(void)
+void a64fx_hpc_hwprefetch_set_enabled_l2(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
@@ -98,7 +98,7 @@ void a64fx_hpc_hwprefetch_enable_l2(void)
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
 }
 
-void a64fx_hpc_hwprefetch_disable_l1(void)
+void a64fx_hpc_hwprefetch_set_disabled_l1(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
@@ -106,7 +106,7 @@ void a64fx_hpc_hwprefetch_disable_l1(void)
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
 }
 
-void a64fx_hpc_hwprefetch_disable_l2(void)
+void a64fx_hpc_hwprefetch_set_disabled_l2(void)
 {
     uint64_t val;
     ARM_READ_MRS(val, IMP_PF_STREAM_DETECT_CTRL_EL0);

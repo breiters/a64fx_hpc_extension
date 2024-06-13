@@ -12,10 +12,10 @@ extern uint64_t a64fx_hpc_hwprefetch_set_distance_l1(uint64_t distance);
 extern uint64_t a64fx_hpc_hwprefetch_set_distance_l2(uint64_t distance);
 extern uint64_t a64fx_hpc_hwprefetch_get_distance_l1(void);
 extern uint64_t a64fx_hpc_hwprefetch_get_distance_l2(void);
-extern void     a64fx_hpc_hwprefetch_enable_l1(void);
-extern void     a64fx_hpc_hwprefetch_enable_l2(void);
-extern void     a64fx_hpc_hwprefetch_disable_l1(void);
-extern void     a64fx_hpc_hwprefetch_disable_l2(void);
+extern void     a64fx_hpc_hwprefetch_set_enabled_l1(void);
+extern void     a64fx_hpc_hwprefetch_set_enabled_l2(void);
+extern void     a64fx_hpc_hwprefetch_set_disabled_l1(void);
+extern void     a64fx_hpc_hwprefetch_set_disabled_l2(void);
 
 extern void     a64fx_hpc_sectorcache_set_default(void);
 extern void     a64fx_hpc_sectorcache_set_default_l1(void);
