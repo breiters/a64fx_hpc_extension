@@ -40,20 +40,15 @@
 // instruction.
 
 void *a64fx_hpc_hwprefetch_set_tag(const void *address,
-                                   unsigned    disable_pf_l1,
-                                   unsigned    disable_pf_l2,
-                                   unsigned    strong)
+                                   uint64_t    disable_pf_l1,
+                                   uint64_t    disable_pf_l2,
+                                   uint64_t    strong)
 {
     uintptr_t tagged_address = (uintptr_t)address;
 
-    if (strong)
-        tagged_address |= BIT_ULL(60);
-    if (disable_pf_l2)
-        tagged_address |= BIT_ULL(61);
-    if (disable_pf_l1)
-        tagged_address |= BIT_ULL(62);
+    tagged_address |= (strong & 1ULL) << 60 | (disable_pf_l2 & 1ULL) << 61 |
+                      (disable_pf_l1 & 1ULL) << 62;
 
-    /** TODO: better implementation w/o conditionals */
     return (void *)tagged_address;
 }
 

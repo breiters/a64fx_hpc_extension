@@ -21,7 +21,7 @@
 // [2:0] l1_sec0_max
 // The number of L1 Sector ID=0 of maximum sectors is set.
 
-uint64_t a64fx_hpc_sectorcache_set_size_l1(unsigned sector, uint64_t size)
+uint64_t a64fx_hpc_sectorcache_set_size_l1(uint64_t sector, uint64_t size)
 {
     assert(size < 5);
     assert(sector < 4);
@@ -66,7 +66,7 @@ uint64_t a64fx_hpc_sectorcache_set_size_l1(unsigned sector, uint64_t size)
 // note: we only use l2 sector set0 
 // because selecting sector set1 (sector 2/3) requires EL1
 
-uint64_t a64fx_hpc_sectorcache_set_size_l2(unsigned sector, uint64_t size)
+uint64_t a64fx_hpc_sectorcache_set_size_l2(uint64_t sector, uint64_t size)
 {
     assert(size < 17);
     assert(sector < 2);

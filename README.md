@@ -45,7 +45,7 @@ PREFIX=$PREFIX_PATH make install
 First load the kernel module:
 
 ```sh
-insmod a64fx_hpc_extension
+insmod a64fx_hpc_extension.ko
 ```
 
 Link the library to your application with `-la64fx_hpc_extension` and include the library header `a64fx_hpc_extension.h`. 
