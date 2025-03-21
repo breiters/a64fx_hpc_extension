@@ -8,6 +8,8 @@ extern "C" {
 #include <stdint.h> /* uint64_t */
 
 extern void     a64fx_hpc_hwprefetch_set_default(void);
+extern uint64_t a64fx_hpc_hwprefetch_set_control_enabled(void);
+extern uint64_t a64fx_hpc_hwprefetch_set_control_disabled(void);
 
 /**
  * @brief Sets the L1D cache hardware prefetch distance.

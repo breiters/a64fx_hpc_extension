@@ -42,6 +42,26 @@ void a64fx_hpc_hwprefetch_set_default(void)
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
 }
 
+uint64_t a64fx_hpc_hwprefetch_set_control_enabled(void)
+{
+    uint64_t val_old;
+    ARM_READ_MRS(val_old, IMP_PF_STREAM_DETECT_CTRL_EL0);
+    uint64_t val  = val_old;
+    val           = val | BIT_ULL(63);
+    ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
+    return val_old;
+}
+
+uint64_t a64fx_hpc_hwprefetch_set_control_disabled(void)
+{
+    uint64_t val_old;
+    ARM_READ_MRS(val_old, IMP_PF_STREAM_DETECT_CTRL_EL0);
+    uint64_t val  = val_old;
+    val           = val & ~BIT_ULL(63);
+    ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
+    return val_old;
+}
+
 uint64_t a64fx_hpc_hwprefetch_set_distance_l1(uint64_t distance)
 {
     assert(distance < 16);
@@ -50,7 +70,7 @@ uint64_t a64fx_hpc_hwprefetch_set_distance_l1(uint64_t distance)
     uint64_t val  = val_old;
     uint64_t mask = ~GENMASK_ULL(27, 24);
     val           = val & mask;
-    val           = val | (distance << 24) | (1ULL << 63);
+    val           = val | (distance << 24);
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
     return val_old;
 }
@@ -63,7 +83,7 @@ uint64_t a64fx_hpc_hwprefetch_set_distance_l2(uint64_t distance)
     uint64_t val  = val_old;
     uint64_t mask = ~GENMASK_ULL(19, 16);
     val           = val & mask;
-    val           = val | (distance << 16) | (1ULL << 63);
+    val           = val | (distance << 16);
     ARM_WRITE_MSR(val, IMP_PF_STREAM_DETECT_CTRL_EL0);
     return val_old;
 }

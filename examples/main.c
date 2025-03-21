@@ -4,12 +4,18 @@
 #include <omp.h>
 #include <stdio.h>
 
-int main(int main, char **args)
+int main(int argc, char **argv)
 {
     printf("========================================================\n");
     printf("Setting prefetch distance on L1 to 1 and on L2 to 2 ...\n");
     printf("========================================================\n");
 
+#pragma omp parallel
+    {
+        /* Enable the hardware prefetch control on each core */
+        a64fx_hpc_hwprefetch_set_control_enabled();
+    }
+    
 #pragma omp parallel
     {
         /* L1 and L2 setting is per PE */
@@ -47,6 +53,11 @@ int main(int main, char **args)
 
 #pragma omp parallel
     {
+        /* Disabling the hardware prefetch control on each core */
+        /* Also done in 'a64fx_hpc_hwprefetch_set_default' */
+        // a64fx_hpc_hwprefetch_set_control_disabled();
+
+        /* Set default values on each core */
         a64fx_hpc_hwprefetch_set_default();
     }
 }
